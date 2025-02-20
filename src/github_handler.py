@@ -18,10 +18,10 @@ class GitHubHandler:
         self.debug = debug
         
         # Get token with debug info
-        self.token = token or os.getenv('GITHUB_TOKEN')
+        self.token = token or os.getenv('GH_TOKEN')
         if self.debug:
             self.console.print("\nGitHub Handler Debug:", style="yellow")
-            self.console.print(f"Token environment variable present: {'GITHUB_TOKEN' in os.environ}")
+            self.console.print(f"Token environment variable present: {'GH_TOKEN' in os.environ}")
             if self.token:
                 self.console.print(f"Token starts with: {self.token[:10]}...")
                 self.console.print(f"Token length: {len(self.token)}")
@@ -36,7 +36,7 @@ class GitHubHandler:
                     self.console.print(f"API test failed: {response.json()}", style="red")
         
         if not self.token:
-            raise ValueError("GitHub token is required. Set GITHUB_TOKEN environment variable or pass token directly.")
+            raise ValueError("GitHub token is required. Set GH_TOKEN environment variable or pass token directly.")
         
         # Validate token format
         if not self.token.startswith(('ghp_', 'github_pat_')):
@@ -67,12 +67,12 @@ class GitHubHandler:
     
     def get_organization(self, org_name: Optional[str] = None) -> Organization:
         """Get GitHub organization."""
-        org_name = org_name or os.getenv('GITHUB_ORG')
+        org_name = org_name or os.getenv('GH_ORG')
         if self.debug:
             self.console.print(f"\nTrying to access organization: {org_name}", style="yellow")
         
         if not org_name:
-            raise ValueError("Organization name is required. Set GITHUB_ORG environment variable or pass org_name directly.")
+            raise ValueError("Organization name is required. Set GH_ORG environment variable or pass org_name directly.")
         
         try:
             return self.github.get_organization(org_name)

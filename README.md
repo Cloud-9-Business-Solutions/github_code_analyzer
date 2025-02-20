@@ -47,8 +47,8 @@ A Python tool for analyzing code patterns across multiple repositories within a 
    ```
    Edit `.env` file and add your GitHub token and organization name:
    ```
-   GITHUB_TOKEN=your_token_here
-   GITHUB_ORG=your_organization_name
+   GH_TOKEN=your_token_here
+   GH_ORG=your_organization_name
    ```
 
 ## Usage
@@ -164,7 +164,7 @@ The tool will:
 
 - `--pattern`: Required. Pattern to search for in files (e.g., "*.tf", "src/*.py")
 - `--contents`: Optional. Search for specific content within matching files
-- `--org`: Optional. Override the GitHub organization name from GITHUB_ORG environment variable
+- `--org`: Optional. Override the GitHub organization name from GH_ORG environment variable
 - `--output`: Optional. Output file path (default: reports/results.csv)
 - `--format`: Optional. Output format, either 'csv' or 'json' (default: csv)
 - `--branch`: Optional. Specific branch to analyze (default: repository default branch)
@@ -210,8 +210,8 @@ The JSON output provides detailed information:
 
 The tool uses the following environment variables from your `.env` file:
 
-- `GITHUB_TOKEN`: Required. Your GitHub Personal Access Token
-- `GITHUB_ORG`: Required. Your GitHub organization name (can be overridden with --org)
+- `GH_TOKEN`: Required. Your GitHub Personal Access Token
+- `GH_ORG`: Required. Your GitHub organization name (can be overridden with --org)
 - `EXCLUSIONS_FILE`: Optional. Path to repository exclusions file (default: exclusions/repos.csv)
 - `INCLUSIONS_FILE`: Optional. Path to repository inclusions file (default: inclusions/repos.csv)
 

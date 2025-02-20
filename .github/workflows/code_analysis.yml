@@ -67,8 +67,8 @@ jobs:
 
           # Create .env file
           cat > .env << EOL
-          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ORG=${{ github.repository_owner }}
+          GH_TOKEN=${{ secrets.GH_TOKEN }}
+          GH_ORG=${{ secrets.GH_ORG }}
           EOL
 
       - name: Run code analysis

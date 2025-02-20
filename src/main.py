@@ -84,8 +84,8 @@ def main():
     console.print(f"Found .env file at: {dotenv_path}", style="green")
     
     # Clear any existing environment variables
-    if 'GITHUB_ORG' in os.environ:
-        del os.environ['GITHUB_ORG']
+    if 'GH_ORG' in os.environ:
+        del os.environ['GH_ORG']
     
     # Load environment variables
     load_dotenv(dotenv_path, override=True)
@@ -95,8 +95,11 @@ def main():
         # Use OUTPUT_FILE from environment, or default to results.csv
         output_file = os.getenv('OUTPUT_FILE', 'results.csv')
         if not os.path.isabs(output_file):
-            # If relative path, put it in reports directory
-            args.output = str(Path('reports') / output_file)
+            # If relative path and doesn't start with 'reports/', put it in reports directory
+            if not output_file.startswith('reports/'):
+                args.output = str(Path('reports') / output_file)
+            else:
+                args.output = output_file
         else:
             args.output = output_file
         
@@ -104,19 +107,19 @@ def main():
             console.print(f"Using output file from environment: {args.output}", style="blue")
     
     # Verify environment variables
-    github_token = os.getenv('GITHUB_TOKEN')
-    github_org = os.getenv('GITHUB_ORG')
+    github_token = os.getenv('GH_TOKEN')
+    github_org = os.getenv('GH_ORG')
     
     if args.debug:
         console.print("\nDebug Information:", style="yellow")
-        console.print(f"GITHUB_ORG value: {github_org}")
+        console.print(f"GH_ORG value: {github_org}")
         console.print(f"Token starts with: {github_token[:10]}..." if github_token else "No token found")
         console.print(f"Working directory: {os.getcwd()}")
         console.print(f".env file path: {dotenv_path}")
     
     if not github_token or not github_org:
         console.print("\nError: Required environment variables not found in .env file", style="red")
-        console.print("Please ensure GITHUB_TOKEN and GITHUB_ORG are set", style="red")
+        console.print("Please ensure GH_TOKEN and GH_ORG are set", style="red")
         return 1
     
     try:
