@@ -69,7 +69,7 @@ class ReportGenerator:
             raise
     
     def export_csv(self, data: Dict, output_path: str):
-        """Export results to CSV file with repository name, URL, file path, and line number."""
+        """Export results to CSV file with repository name, URL, file name, and line number."""
         try:
             # Create a list to store all entries (including multiple matches per file)
             all_entries = []
@@ -89,7 +89,7 @@ class ReportGenerator:
                                 all_entries.append({
                                     'repository': repo_name,
                                     'repository_url': repo_url,
-                                    'file_path': relative_path,
+                                    'file_name': relative_path,
                                     'line_number': match.get('line_number', '')
                                 })
                         else:
@@ -97,7 +97,7 @@ class ReportGenerator:
                             all_entries.append({
                                 'repository': repo_name,
                                 'repository_url': repo_url,
-                                'file_path': relative_path,
+                                'file_name': relative_path,
                                 'line_number': ''
                             })
                 except Exception as e:
