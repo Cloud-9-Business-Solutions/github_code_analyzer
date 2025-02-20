@@ -1,7 +1,7 @@
 """
 Report generation module for code analysis results.
 """
-from typing import Dict, List
+from typing import Dict, List, Tuple
 import json
 import csv
 from pathlib import Path
@@ -17,7 +17,7 @@ class ReportGenerator:
         """Initialize report generator."""
         self.console = Console()
     
-    def _get_relative_path(self, full_path: str) -> tuple[str, str]:
+    def _get_relative_path(self, full_path: str) -> Tuple[str, str]:
         """Extract repository name and relative path from full path."""
         try:
             parts = Path(full_path).parts
