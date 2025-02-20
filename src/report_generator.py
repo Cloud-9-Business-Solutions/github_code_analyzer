@@ -41,7 +41,7 @@ class ReportGenerator:
     def _get_repo_url(self, repo_name: str) -> str:
         """Generate GitHub repository URL."""
         if repo_name:
-            org = os.getenv('GITHUB_ORG', '')
+            org = os.getenv('GH_ORG', '')
             if org:
                 return f"https://github.com/{org}/{repo_name}"
         return ""
