@@ -1,7 +1,7 @@
 """
 Code analysis module for pattern matching in files.
 """
-from typing import List, Dict, Pattern, Optional, Set
+from typing import List, Dict, Pattern, Optional, Set, Tuple
 import re
 from pathlib import Path
 import logging
@@ -171,7 +171,7 @@ class CodeAnalyzer:
             self.logger.debug(f"Adding file to search list: {file_path}")
         return True
     
-    def get_context_lines(self, lines: List[str], current_idx: int, context_size: int = 2) -> tuple[List[str], List[str]]:
+    def get_context_lines(self, lines: List[str], current_idx: int, context_size: int = 2) -> Tuple[List[str], List[str]]:
         """Get context lines before and after a match."""
         start_idx = max(0, current_idx - context_size)
         end_idx = min(len(lines), current_idx + context_size + 1)
