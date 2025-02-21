@@ -2,6 +2,22 @@
 
 A Python tool for analyzing code patterns across multiple repositories within a GitHub organization. This tool helps identify specific patterns in code, making it easier to audit and maintain code at scale.
 
+## Quick Start: Running via GitHub Actions
+
+1. Go to the "Actions" tab in your GitHub repository
+2. Click on "Code Analysis" workflow
+3. Click "Run workflow" button
+4. Fill in the required parameters:
+   - `Pattern`: Pattern to search for in files (e.g., "*.tf" for Terraform files)
+   - `File pattern` (optional): Glob pattern for specific files (default: all files)
+   - `Contents` (optional): Text to search within matching files (e.g., "provider" for Terraform providers)
+   - `Inclusions` (optional): Comma-separated list of repositories to include
+   - `Exclusions` (optional): Comma-separated list of repositories to exclude
+   - `Debug` (optional): Enable debug output for troubleshooting
+5. Click "Run workflow" to start the analysis
+6. Once complete, download the results from the "Artifacts" section
+   - Results will be in CSV format with columns: repository, repository_url, file_name, line_number
+
 ## Features
 
 - GitHub organization repository scanning
