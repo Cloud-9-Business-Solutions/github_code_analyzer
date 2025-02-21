@@ -13,10 +13,13 @@ A Python tool for analyzing code patterns across multiple repositories within a 
    - `Contents` (optional): Text to search within matching files (e.g., "provider" for Terraform providers)
    - `Inclusions` (optional): Comma-separated list of repositories to include
    - `Exclusions` (optional): Comma-separated list of repositories to exclude
+   - `Preview` (optional): Enable preview mode to analyze only first 10 repositories
    - `Debug` (optional): Enable debug output for troubleshooting
 5. Click "Run workflow" to start the analysis
 6. Once complete, download the results from the "Artifacts" section
    - Results will be in CSV format with columns: repository, repository_url, file_name, line_number
+
+Note: Use preview mode first to test your search parameters on a limited set of repositories before running a full analysis.
 
 ## Features
 
@@ -33,7 +36,7 @@ A Python tool for analyzing code patterns across multiple repositories within a 
 ## Prerequisites
 
 - Python 3.8 or higher
-- GitHub Personal Access Token with appropriate permissions
+- GitHub Personal Access Token with appropriate permissions (repo, read:org)
 - Access to target GitHub organization
 
 ## Installation
